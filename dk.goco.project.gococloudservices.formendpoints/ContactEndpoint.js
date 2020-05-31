@@ -18,7 +18,7 @@ function whitelisted(mail){
   return predicate
 }
 
-const EmailGenerator = require("../dk.goco.project.emailtemplates/EmailGenerator.js")
+const EmailGenerator = require("./emailtemplates/EmailGenerator.js")
 
 
 /**

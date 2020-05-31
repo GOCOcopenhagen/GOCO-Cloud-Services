@@ -107,3 +107,4 @@ dist
 */.DS_Store
 dk.goco.project.gococloudservices.formendpoints/credentials.json
 dk.goco.project.gococloudservices.formendpoints/package-lock.json
+.DS_Store

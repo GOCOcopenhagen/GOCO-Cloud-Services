@@ -1,4 +1,25 @@
 /**
+ * Checks if the domain email is send to is whitelisted
+ *
+ * @param mail String of email including domain and user.
+ */
+
+function whitelisted(mail){
+  var predicate = false
+  var domain = mail.split('@')[1].toLowerCase()
+
+  const fs = require('fs');
+  var whitelists = JSON.parse(fs.readFileSync('whitelist.json', 'utf8'));
+  whitelists.forEach(e => {
+    if(domain==e){
+      predicate = true
+    }
+  }); 
+  return predicate
+}
+
+
+/**
  * Sends an email using Nodemailer and data from the request
  * and environment variables.
  *
@@ -12,7 +33,17 @@ function handlePOST(req, res) {
     res.status(422).send({
       error: {
         code: 422,
-        message: "Missing arguments"
+        message: "Missing arguments. Recived: \nSubject"+req.body.subject+"\nText"+req.body.text+"\nTo"+req.body.to
+      }
+    });
+    return;
+  }
+
+  if (!whitelisted(req.body.to)) {
+    res.status(422).send({
+      error: {
+        code: 422,
+        message: "Invalid to argument arguments"
       }
     });
     return;
@@ -35,7 +66,7 @@ function handlePOST(req, res) {
   const mailOptions = {
     from: process.env.GMAIL_ADDRESS,
     to: req.body.to,
-    subject: req.body.subject,
+    subject: "Ny mail på din hjemmeside fra: '"+req.body.subject+"'",
     text: req.body.text
   };
 

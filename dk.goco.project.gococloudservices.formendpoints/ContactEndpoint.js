@@ -34,9 +34,9 @@ function handlePOST(req, res) {
       error: {
         code: 422,
         message: "Missing arguments. ",
-        subject: req.body.subject,
-        text: req.body.text,
-        to: req.body.to
+        subject: req.body.subject||undefined,
+        text: req.body.text||undefined,
+        to: req.body.to||undefined
       }
     });
     return;

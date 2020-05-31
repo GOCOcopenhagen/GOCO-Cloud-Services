@@ -8,7 +8,7 @@
 function handlePOST(req, res) {
   res.set("Access-Control-Allow-Origin", "*");
 
-  if (!req.body.subject || !req.body.text) {
+  if (!req.body.subject || !req.body.text || !req.body.to) {
     res.status(422).send({
       error: {
         code: 422,
@@ -33,9 +33,8 @@ function handlePOST(req, res) {
   });
 
   const mailOptions = {
-    from: req.body.from || process.env.MAIL_FROM,
-    to: req.body.to || process.env.MAIL_TO,
-    bcc: req.body.bcc || process.env.MAIL_BCC,
+    from: process.env.GMAIL_ADDRESS,
+    to: req.body.to,
     subject: req.body.subject,
     text: req.body.text
   };

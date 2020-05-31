@@ -56,8 +56,6 @@ function handlePOST(req, res) {
 
   const nodeMailer = require("nodemailer");
 
-  const EmailGenerator = require("../dk.goco.project.emailtemplates/EmailGenerator.js")
-
   const transporter = nodeMailer.createTransport({
     host: "smtp.gmail.com",
     port: 465,

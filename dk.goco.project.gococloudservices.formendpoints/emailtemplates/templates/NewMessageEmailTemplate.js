@@ -1,5 +1,12 @@
 
 exports.html = `
+<!--
+    parameters has to be ecapsulated by hashtags
+    @param title
+    @param from
+    @param message
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,6 +15,7 @@ exports.html = `
 <body>
     <style type="text/css">
         @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
         p,
         h1,
         h2,
@@ -23,23 +31,19 @@ exports.html = `
     <div>
         <h1 style="text-align:center; font-family: 'Oswald', sans-serif;"><span style="color: red;">GOCO</span> Cloud
             Services</h1>
-        <h3 style="margin-left: 20%; font-family: 'Oswald', sans-serif;">New message <span
+        <h3 style="margin-left: 10%; font-family: 'Oswald', sans-serif;">New message <span
                 style="height: 8px;width: 8px;background-color: red; border-radius: 50%;display: inline-block; margin-bottom: 10px;"></span>
         </h3>
-        <div style="width: 60%; margin-left: 20%;">
-            <div style="padding: 20px; border: 1px solid gray; border-radius: 0px; " >
-                <div style="padding: 10px;" tabindex="0">
-                    <div >
-                        <h2 >#title#</h2>
-                        <h3 >From #from#</h3>
-                    </div>
+        <div style="width: 80%; margin-left: 10%;">
+            <div style="padding: 10px;">
+                <div style="padding: 0px; margin-bottom: 30px;" tabindex="0">
+                    <h4 style="color: gray;">From #from#</h4>
+                    <h2 style="color: black;">#title#</h2>
                     <div>#message#</div>
                 </div>
-                <div >
-                    <div >
-                        <a href="mailto:#from#" style="text-decoration: none;">
-                            <button style="color: red;">Reply</button></a>
-                    </div>
+                <div>
+                    <a href="mailto:#from#" style="text-decoration: none;">
+                        <button style="color: red;">Reply</button></a>
                 </div>
             </div>
         </div>

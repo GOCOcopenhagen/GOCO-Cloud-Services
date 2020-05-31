@@ -1,0 +1,15 @@
+{
+  "name": "dk.goco.project.gococloudservices",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ContactEndpoint.js",
+  "dependencies": {
+    "nodemailer": "^6.4.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node ContactEndpoint.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

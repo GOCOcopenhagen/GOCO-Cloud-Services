@@ -102,3 +102,8 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Coustom
+*/.DS_Store
+dk.goco.project.gococloudservices.formendpoints/credentials.json
+dk.goco.project.gococloudservices.formendpoints/package-lock.json

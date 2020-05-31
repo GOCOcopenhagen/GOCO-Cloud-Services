@@ -33,7 +33,10 @@ function handlePOST(req, res) {
     res.status(422).send({
       error: {
         code: 422,
-        message: "Missing arguments. Received: \nSubject"+req.body.subject+"\nText"+req.body.text+"\nTo"+req.body.to
+        message: "Missing arguments. ",
+        subject: req.body.subject,
+        text: req.body.text,
+        to: req.body.to
       }
     });
     return;
@@ -43,7 +46,7 @@ function handlePOST(req, res) {
     res.status(422).send({
       error: {
         code: 426,
-        message: "This email is not whitelisted. Upgrade from service user is required"
+        message: "The email "+req.body.to+" is not whitelisted. Upgrade from service user is required"
       }
     });
     return;

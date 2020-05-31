@@ -108,3 +108,4 @@ dist
 dk.goco.project.gococloudservices.formendpoints/credentials.json
 dk.goco.project.gococloudservices.formendpoints/package-lock.json
 .DS_Store
+.vscode/launch.json

@@ -29,14 +29,16 @@ function whitelisted(mail){
 function handlePOST(req, res) {
   res.set("Access-Control-Allow-Origin", "*");
 
-  if (!req.body.subject || !req.body.text || !req.body.to) {
+  if (!req.body.subject || !req.body.text || !req.body.to || !req.body.from) {
     res.status(422).send({
       error: {
         code: 422,
         message: "Missing arguments. ",
         subject: req.body.subject||undefined,
+        from: req.body.from ||undefined,
         text: req.body.text||undefined,
-        to: req.body.to||undefined
+        to: req.body.to||undefined,
+        from: req.body.from||undefined
       }
     });
     return;
@@ -54,6 +56,8 @@ function handlePOST(req, res) {
 
   const nodeMailer = require("nodemailer");
 
+  const EmailGenerator = require("../dk.goco.project.emailtemplates/EmailGenerator.js")
+
   const transporter = nodeMailer.createTransport({
     host: "smtp.gmail.com",
     port: 465,
@@ -66,11 +70,13 @@ function handlePOST(req, res) {
     }
   });
 
+  const EmailGenerator = require("../dk.goco.project.emailtemplates/EmailGenerator.js")
+
   const mailOptions = {
     from: process.env.GMAIL_ADDRESS,
     to: req.body.to,
-    subject: "Ny mail på din hjemmeside fra: '"+req.body.subject+"'",
-    text: req.body.text
+    subject: "Ny mail på din hjemmeside fra: '"+req.body.from+"' - GOCO Cloud Services",
+    html: EmailGenerator.newMessageTemplate(req.body.from, req.body.subject, req.body.text)
   };
 
   transporter

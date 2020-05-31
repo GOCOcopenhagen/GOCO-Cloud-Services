@@ -18,6 +18,8 @@ function whitelisted(mail){
   return predicate
 }
 
+const EmailGenerator = require("../dk.goco.project.emailtemplates/EmailGenerator.js")
+
 
 /**
  * Sends an email using Nodemailer and data from the request
@@ -67,8 +69,6 @@ function handlePOST(req, res) {
       privateKey: process.env.PRIVATE_KEY.replace(/\\n/g, "\n")
     }
   });
-
-  const EmailGenerator = require("../dk.goco.project.emailtemplates/EmailGenerator.js")
 
   const mailOptions = {
     from: process.env.GMAIL_ADDRESS,

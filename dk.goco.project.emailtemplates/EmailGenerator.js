@@ -1,7 +1,7 @@
 
 const NewMessageTemplateBuild = require('./templates/NewMessageEmailTemplate')
 
-exports.newMessageTemplate = function (from, title, message) {
+module.exports.newMessageTemplate = function (from, title, message) {
     var template = NewMessageTemplateBuild.html
     template = template.replace("#from", from)
     template = template.replace("#title", title)

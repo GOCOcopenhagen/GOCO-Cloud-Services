@@ -1,0 +1,15 @@
+{
+  "name": "NewsletterSubscription",
+  "version": "1.0.0",
+  "description": "",
+  "main": "SignupEndpoint.js",
+  "dependencies": {
+    "nodemailer": "^6.4.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node SignupEndpoint.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

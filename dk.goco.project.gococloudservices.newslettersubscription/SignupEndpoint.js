@@ -17,10 +17,20 @@ function handleOPTIONS(req, res) {
 }
 
 exports.signUp = (req, res) => {
-    res.status(200).send({
-        data: {
-            code: 200,
-            message: "Mail sent"
-        }
-    });
+    switch (req.method) {
+        case "OPTIONS":
+            handleOPTIONS(req, res);
+            break;
+        case "POST":
+            handlePOST(req, res);
+            break;
+        default:
+            res.status(405).send({
+                error: {
+                    code: 405,
+                    message: "Wrong HTTP method"
+                }
+            });
+            break;
+    }
 };
